@@ -1,11 +1,9 @@
 //import Nav from "../components/nav";
-
+import Link from "next/link";
 import { useState } from "react";
 
 export default function IndexPage() {
   const [name, setName] = useState("Stranger");
-  const [color, setColor] = useState("pink-700");
-  
 
   return (
     <div>
@@ -27,20 +25,19 @@ export default function IndexPage() {
               onChange={(e) => setName(e.target.value)}
             />
           </label>
-          <label>
-            Color:
-            <input
-              type="text"
-              name="color"
-              value={color}
-              onChange={(e) => setColor(e.target.value)}
-            />
-          </label>
+
           <input type="submit" value="Submit" />
         </form>
-        <h1 className={`text-5xl text-center text-${color}`}>
-          Hello {name}, nice too meet youk!
+        <h1 className="text-5xl text-center text-indigo-500">
+          Hello {name}, nice too meet you!
         </h1>
+        <div className="text-center p-10">
+          <Link legacyBehavior href={`/hello/${name}`}>
+            <a className="text-blue-300 underline">
+              Click to go to your personal page
+            </a>
+          </Link>
+        </div>
       </div>
     </div>
   );
